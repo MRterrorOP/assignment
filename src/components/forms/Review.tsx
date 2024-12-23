@@ -8,8 +8,8 @@ export const Review = () => {
   const { setActiveTab } = useContext(tabContext);
 
   return (
-    <>
-      <div className="review-container h-[70%] overflow-scroll">
+    <div className="h-[100%]">
+      <div className="review-container h-[100%] my-4 overflow-scroll">
         {Object.entries(formValue).map(([key, value]) => (
           <div
             key={key}
@@ -20,10 +20,10 @@ export const Review = () => {
           </div>
         ))}
       </div>
-      <div className=" my-2 flex justify-between">
+      <div className=" my-4 flex justify-between">
         <Button onClick={() => setActiveTab("step3")}>Previous</Button>
         <Button onClick={() => console.log(formValue)}>Submit</Button>
       </div>
-    </>
+    </div>
   );
 };
