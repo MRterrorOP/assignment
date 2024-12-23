@@ -32,9 +32,9 @@ export const formContext = createContext<FormContextType>({
     city: "",
     state: "",
     country: "",
-    notification: false,
-    newsLetter: false,
-    emailSubcription: false,
+    notification: undefined,
+    newsLetter: undefined,
+    emailSubcription: undefined,
   },
   setFormValue: () => {},
 });
@@ -50,9 +50,9 @@ const FormContextProvider = ({ children }: { children: React.ReactNode }) => {
     city: "",
     state: "",
     country: "",
-    notification: true,
-    newsLetter: true,
-    emailSubcription: true,
+    notification: undefined,
+    newsLetter: undefined,
+    emailSubcription: undefined,
   });
 
   return (
