@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Assignment - Internship Project
 
-## Getting Started
+This project demonstrates my skills in Next.js and web development. It involves creating a full-stack application with a frontend interface and backend logic handled via Next.js API routes.
+Features
 
-First, run the development server:
+    Multi step form: Allows users to enter valid input value and validate it using zod.
+    Backend Integration: Utilizes Next.js API routes to handle form data so that it presist during page reloading and state change.
+    Responsive Design: The site works seamlessly on mobile and desktop devices.
+    Theme Toggle: Set darkmode and light mode base on user preferences.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    Frontend:
+        Next.js, React
+        Tailwind CSS , shadcn ui (component library), framer motion, Context api. 
+    Backend:
+        Next.js API Routes
+    Deployment:
+        Vercel for hosting the live demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Getting Started
+Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    Node.js >= 18.x
+    npm or yarn
 
-## Learn More
+Installation
 
-To learn more about Next.js, take a look at the following resources:
+    Clone the repository:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+git clone https://github.com/MRterrorOP/assignment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Install dependencies:
 
-## Deploy on Vercel
+npm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Run the app:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    npm run dev
+
+    Visit the application on http://localhost:3000.
+
+Demo
+
+    Live Demo: https://assignment-omega-livid.vercel.app/
+
+How It Works
+
+The app allows users to fill multi step form and give feedback if they enter invalidate value. The form data in every step succession sent to backend to save. So we can fetch data from backend during page reload and rendering so state remain presist.
+
+License
+
+This project is licensed under the MIT License.
