@@ -35,8 +35,21 @@ export function Preferences() {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setFormValue((prev) => ({ ...prev, ...values }));
+    const response = await fetch("api/save-form-data", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+    try {
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
     setActiveTab("step4");
   };
 
@@ -49,7 +62,7 @@ export function Preferences() {
             name="emailSubcription"
             render={({ field }) => (
               <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                <div className="space-y-0.5">
+                <div className="space-y-0.5" title="Email subcription">
                   <FormLabel>Marketing emails</FormLabel>
                   <FormDescription>
                     Receive emails about new products, features, and more.
@@ -69,7 +82,7 @@ export function Preferences() {
             name="newsLetter"
             render={({ field }) => (
               <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                <div className="space-y-0.5">
+                <div className="space-y-0.5" title="News letter">
                   <FormLabel>News letter</FormLabel>
                   <FormDescription>
                     Recieve News letter weekly to stay updated.
@@ -89,7 +102,7 @@ export function Preferences() {
             name="notification"
             render={({ field }) => (
               <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-                <div className="space-y-0.5">
+                <div className="space-y-0.5" title="Notification">
                   <FormLabel>Notification</FormLabel>
                   <FormDescription>Recieve notification.</FormDescription>
                 </div>

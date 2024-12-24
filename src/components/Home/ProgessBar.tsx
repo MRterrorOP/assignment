@@ -12,8 +12,8 @@ export function ProgessBar() {
 
   useEffect(() => {
     let filledFormValue = 0;
-    formEntries.forEach(([key, value]) => {
-      if (value) {
+    formEntries.forEach(([, value]) => {
+      if (value != undefined || value != "" || value != null) {
         filledFormValue++;
       }
     });

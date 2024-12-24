@@ -21,7 +21,6 @@ export const ActiveTabContextProvider = ({
   const [activeTab, setActiveTab] = useState<
     "step1" | "step2" | "step3" | "step4"
   >("step1");
-  console.log("active", activeTab);
   return (
     <tabContext.Provider value={{ activeTab, setActiveTab }}>
       {children}

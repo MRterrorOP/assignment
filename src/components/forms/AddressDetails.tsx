@@ -46,8 +46,21 @@ export const AddressDetails = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setFormValue((prev) => ({ ...prev, ...values }));
+    const response = await fetch("api/save-form-data", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+    try {
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
     setActiveTab("step3");
   }
 
@@ -60,7 +73,11 @@ export const AddressDetails = () => {
           <FormItem>
             <FormLabel>Floor or Plot</FormLabel>
             <FormControl>
-              <Input placeholder="Enter street name" {...field}></Input>
+              <Input
+                title="floor or plot"
+                placeholder="floor or plot name"
+                {...field}
+              ></Input>
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -73,7 +90,11 @@ export const AddressDetails = () => {
           <FormItem>
             <FormLabel>Street name</FormLabel>
             <FormControl>
-              <Input placeholder="Enter street name" {...field}></Input>
+              <Input
+                title="street name"
+                placeholder="Enter street name"
+                {...field}
+              ></Input>
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -86,7 +107,11 @@ export const AddressDetails = () => {
           <FormItem>
             <FormLabel>Postal code</FormLabel>
             <FormControl>
-              <Input placeholder="Postal code" {...field}></Input>
+              <Input
+                title="Postal code"
+                placeholder="Postal code"
+                {...field}
+              ></Input>
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -99,7 +124,11 @@ export const AddressDetails = () => {
           <FormItem>
             <FormLabel>City name</FormLabel>
             <FormControl>
-              <Input placeholder="city name" {...field}></Input>
+              <Input
+                title="city name"
+                placeholder="city name"
+                {...field}
+              ></Input>
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -112,7 +141,11 @@ export const AddressDetails = () => {
           <FormItem>
             <FormLabel>State name</FormLabel>
             <FormControl>
-              <Input placeholder="state name" {...field}></Input>
+              <Input
+                title="state name"
+                placeholder="state name"
+                {...field}
+              ></Input>
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -125,7 +158,11 @@ export const AddressDetails = () => {
           <FormItem>
             <FormLabel>Coutry name</FormLabel>
             <FormControl>
-              <Input placeholder="country name" {...field}></Input>
+              <Input
+                title="country name"
+                placeholder="country name"
+                {...field}
+              ></Input>
             </FormControl>
             <FormMessage />
           </FormItem>

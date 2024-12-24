@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { formContext } from "./formContextProvider";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -37,7 +37,6 @@ const formSchema = z.object({
 export function PersonalDetails() {
   const { formValue, setFormValue } = useContext(formContext);
   const { setActiveTab } = useContext(tabContext);
-  // 1. Define your form.
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,9 +47,52 @@ export function PersonalDetails() {
     },
   });
 
+  const { reset } = form;
+
+  //fetch Data from backend.
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("api/save-form-data", {
+          method: "GET",
+        });
+        try {
+          const data = await res.json();
+          setFormValue((prev) => ({ ...prev, ...data }));
+          reset({
+            username: data.username || "",
+            email: data.email || "",
+            gender: data.gender || "male", // Default gender
+          });
+        } catch {
+          console.log("errror");
+        }
+
+        // Use reset to update form values
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [setFormValue, reset]);
+
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setFormValue((prev) => ({ ...prev, ...values }));
+    const response = await fetch("api/save-form-data", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+    try {
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
     setActiveTab("step2");
     console.log("step2");
   }
@@ -63,7 +105,11 @@ export function PersonalDetails() {
           <FormItem>
             <FormLabel>Username</FormLabel>
             <FormControl>
-              <Input placeholder="Enter Username" {...field} />
+              <Input
+                placeholder="Enter Username"
+                title="User Name"
+                {...field}
+              />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -76,7 +122,11 @@ export function PersonalDetails() {
           <FormItem>
             <FormLabel>Email</FormLabel>
             <FormControl>
-              <Input placeholder="Enter email" {...field} />
+              <Input
+                placeholder="Enter email"
+                title="Email Address"
+                {...field}
+              />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -91,7 +141,7 @@ export function PersonalDetails() {
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
                 <SelectTrigger>
-                  <SelectValue placeholder="Gender" />
+                  <SelectValue placeholder="Gender" title="User Name" />
                 </SelectTrigger>
               </FormControl>
               <SelectContent>
