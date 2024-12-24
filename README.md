@@ -28,7 +28,7 @@ Installation
 
     Clone the repository:
 
-git clone [https://github.com/your-username/assignment.git](https://github.com/MRterrorOP/assignment)
+git clone https://github.com/MRterrorOP/assignment
 
 Install dependencies:
 
@@ -42,7 +42,7 @@ Run the app:
 
 Demo
 
-    Live Demo: https://your-project-name.vercel.app
+    Live Demo: https://assignment-omega-livid.vercel.app/
 
 How It Works
 
