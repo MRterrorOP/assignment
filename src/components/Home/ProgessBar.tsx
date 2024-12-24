@@ -13,10 +13,11 @@ export function ProgessBar() {
   useEffect(() => {
     let filledFormValue = 0;
     formEntries.forEach(([, value]) => {
-      if (value != undefined || value != "" || value != null) {
+      if (value !== undefined && value !== "" && value !== null) {
         filledFormValue++;
       }
     });
+
     setProgess((filledFormValue / 12) * 100);
   }, [formEntries]);
 
