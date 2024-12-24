@@ -46,7 +46,8 @@ Demo
 
 How It Works
 
-The app allows users to fill multi step form and give feedback if they enter invalidate value. The form data in every step succession sent to backend to save. So we can fetch data from backend during page reload and rendering so state remain presist .
+The app allows users to fill multi step form and give feedback if they enter invalidate value. The form data in every step succession sent to backend to save. So we can fetch data from backend during page reload and rendering so state remain presist.
+
 License
 
 This project is licensed under the MIT License.
