@@ -8,15 +8,9 @@ import { Review } from "./Review";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Tab() {
-  const { activeTab, setActiveTab } = useContext(tabContext);
+  const { activeTab } = useContext(tabContext);
   return (
-    <Tabs
-      defaultValue="step1"
-      value={activeTab}
-      onValueChange={(value) =>
-        setActiveTab(value as "step1" | "step2" | "step3" | "step4")
-      }
-    >
+    <Tabs defaultValue="step1" value={activeTab}>
       {/* Navigation (Stepper) */}
       <TabsList>
         <TabsTrigger value="step1"> Personal Info</TabsTrigger>
